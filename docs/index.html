@@ -1,0 +1,201 @@
+<!<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>APEBench: A Benchmark for Autoregressive Neural Emulators of PDEs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="static/css/academicons.min.css">
+        <link rel="stylesheet" href="static/css/fontawesome.min.css">
+        <script src="static/js/all.min.js"></script>
+        <script src="static/js/bulma-carousel.min.js"></script>
+
+
+        <link rel="stylesheet" href="static/css/style.css">
+        <script src="static/js/script.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                    <a class="navbar-item" href="https://fkoehler.site/">
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                    </a>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            More Research
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="https://ge.in.tum.de/publications/">
+                                TUM Thuerey Group
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h1 class="title is-1 is-size-3-mobile publication-title">APEBench: A Benchmark for Autoregressive Neural
+                                Emulators of PDEs</h1>
+                            <h2 class="subtitle is-4 opacity-1" style="margin-top: 1rem;opacity:0.7">NeurIPS 2024</h2>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    <a href="https://fkoehler.site/"> Felix Köhler</a>,</span>
+                                <span class="author-block">
+                                    <a href="https://www.cs.cit.tum.de/en/cg/people/niedermayr/">Simon
+                                        Niedermayr</a>,</span>
+                                <span class="author-block">
+                                    <a href="https://www.cs.cit.tum.de/en/cg/people/westermann/">Rüdiger
+                                        Westermann</a>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://ge.in.tum.de/about/n-thuerey/">
+                                        Nils Thuerey</a>
+                                </span>
+                            </div>
+
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">Technical University of Munich</span>
+                            </div>
+
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- PDF Link. -->
+                                    <span class="link-block">
+                                        <a href="#"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </span>
+                                            <span>Paper</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="#"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="ai ai-arxiv"></i>
+                                            </span>
+                                            <span>arXiv</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="#"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code</span>
+                                        </a>
+                                    </span>
+                                    <!-- Dataset Link. -->
+                                    <span class="link-block">
+                                        <a href="#"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="far fa-images"></i>
+                                            </span>
+                                            <span>Dataset</span>
+                                        </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero teaser is-light">
+            <div class="hero-body">
+                <div class="container">
+                    <div id="teaser">
+                        <img src="./static/img/teaser.svg"/>
+                    </div>
+                    <div style="height: 1rem;"></div>
+                    <h2 class="subtitle has-text-centered is-size-6-mobile">
+                        TODO: 3d animations<br>
+                        APEBench is a JAX-based benchmark suite designed to evaluate neural emulators for solving partial differential equations, offering 46 PDEs across various dimensions, and emphasizing temporal generalization, stability, and hybrid training for systematic comparison with classical numerical methods.
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Abstract. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Abstract</h2>
+                        <div class="content has-text-justified">
+                            We introduce the <strong>A</strong>utoregressive <strong>P</strong>DE <strong>E</strong>mulator Benchmark (APEBench), a comprehensive benchmark suite to evaluate autoregressive neural emulators for solving
+                            partial differential equations. APEBench is based on JAX and provides a seamlessly integrated differentiable simulation framework employing efficient pseudo-spectral
+                            methods, enabling 46 distinct PDEs across 1D, 2D, and 3D. Facilitating systematic analysis and comparison of learned emulators, we propose a novel taxonomy for
+                            unrolled training and introduce a unique identifier for PDE dynamics that directly relates to the stability criteria of classical numerical methods. APEBench enables
+                            the evaluation of diverse neural architectures, and unlike existing benchmarks, its tight integration of the solver enables support for differentiable physics training
+                            and neural-hybrid emulators. Moreover, APEBench emphasizes rollout metrics to understand temporal generalization, providing insights into the long-term behavior
+                            of emulating PDE dynamics. In several experiments, we highlight the similarities between neural emulators and numerical simulators.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">BibTeX</h2>
+                <pre><code>@InProceedings{Koehler_2024_NEURIPS,
+    author    = {Koehler, Felix and Niedermayr, Simon and Westermann, R\"udiger and Thuerey, Nils},
+    title     = {APEBench: A Benchmark for Autoregressive Neural Emulators of PDEs},
+    booktitle = {Proceedings of the Neural Information Processing Systems Track on Datasets and Benchmarks},
+    year      = {2024}
+}</code></pre>
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <a class="icon-link" href="">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a class="icon-link" href="https://github.com/KeKsBoTeR" class="external-link" disabled>
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <p>
+                                Website source code borrowed from <a href="https://keunhong.com">Keunhong Park</a>'s <a
+                                    href="https://github.com/nerfies/nerfies.github.io">Nerfies website</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+    </html>
