@@ -1,2 +1,3 @@
-# apebench-paper
-[Project Page] A benchmark suite for autoregressive neural emulation of PDEs, accepted at Neurips 2024.
+# APEBench: A Benchmark for Autoregressive Neural Emulators of PDEs
+
+(Project Page) ... Coming Soon
