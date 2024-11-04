@@ -4,7 +4,7 @@
 
 ## Paper
 
-- ARXIV: coming soon
+- [Arxiv](https://arxiv.org/abs/2411.00180)
 - [Neurips 2024](https://nips.cc/virtual/2024/poster/97550)
 
 ## Software components
