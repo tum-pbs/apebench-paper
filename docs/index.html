@@ -276,6 +276,30 @@
                 </div>
             </div>
         </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Neural-Hybrid Emulators. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Benchmark Neural-Hybrid Emulators with Differentiable Physics</h2>
+                        <div class="content has-text-justified">
+                            ResNet and FNO either as full prediction emulators
+                            or neural-hybrid emulators for 2D advection
+                            ($\gamma_1=10.5$) with a coarse solver doing 10\% or
+                            50\% of the difficulty. The geometric mean of the
+                            rollout error over 100 time steps is shown. Training
+                            with unrolling benefits the % limited receptive
+                            field ResNet yet only shows marginal improvement for
+                            the FNO. The ResNet can work in symbiosis with a
+                            coarse simulator.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="correction_results.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
 
 
