@@ -209,8 +209,22 @@
                     <div class="column is-four-fifths">
                         <h2 class="title is-3">Built-In Support for Unrolled Training</h2>
                         <div class="content has-text-justified">
-                            Blablla
+                            APEBench is built around autoregressive emulation
+                            and hence emphasizes the temporal axis in emulator
+                            learning. This includes the option for unrolled
+                            training (also called
+                            autoregressive/recursive/rollout training). We unify
+                            many approaches in terms of main chain (=unrolled)
+                            length T and branch chain (=reference) length B.
                         </div>
+                        <div class="column is-centered">
+                            <img src="unrolled_objective.png" style="width: 100%;"/>
+                        </div>
+                        <div class="content has-text-justified">
+                            One-Step supervised training is T=B=1, while
+                            five-step unrolled training is T=B=5. Branch-one
+                            diverted chain training is T=5, B=1. The latter requires
+                            a differentiable solver, readily available in APEBench.
                         <div class="content has-text-justified">
                             <img src="burgers_training_animation.gif" style="width: 100%;"/>
                         </div>
