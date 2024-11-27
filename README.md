@@ -1,6 +1,6 @@
 # APEBench: A Benchmark for Autoregressive Neural Emulators of PDEs
 
-[Project Page (under construction)](https://tum-pbs.github.io/apebench-paper/)
+[Project Page](https://tum-pbs.github.io/apebench-paper/)
 
 ## Paper
 
