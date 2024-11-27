@@ -184,7 +184,7 @@
                         <div class="content has-text-justified">
                             Rather than temporally aggregated metrics, APEBench
                             always returns rollout errors to understand temporal
-                            generalization. Evaluation can be done in a wide
+                            generalization. The evaluation can be done in a wide
                             range of metrics, e.g., classical normalized RMSE
                             metrics, Fourier-based mectrics for certain
                             frequency ranges, and Sobolov-based metrics (H1)
@@ -206,10 +206,17 @@
                         <div class="content has-text-justified">
                             Describing Dynamics with a reduced set of
                             information creates an exchange protocol that
-                            uniquely identies an experiment. Importantly, these
+                            uniquely identies an experiment. These
                             "difficulties" also encode the challenge of neural
-                            emulation by also encoding spatial resolution and
+                            emulation by including spatial resolution and
                             spatial dimensions.
+                        </div>
+                        <div class="content has-text-justified">
+                            For example, in the animation below over
+                            diffusivity, convectivity, and dispersivity we can
+                            describe a wide range of PDEs: Diffusion, Burgers,
+                            Korteweg-de Vries, Dispersion, and
+                            Dispersion-Diffusion.
                         </div>
                         <div class="content has-text-justified">
                             <img src="difficulty_animation.gif" style="width: 100%;"/>
@@ -256,8 +263,8 @@
                         <h2 class="title is-3">A wide range of Dynamics</h2>
                         <div class="content has-text-justified">
                         Accessible via the reduced difficulty or normalized
-                        interface or via a physical interface. Most dynamics are
-                        available in 1D, 2D, and 3D.
+                        interfaces or via a physical interface. Most dynamics
+                        are available in 1D, 2D, and 3D.
                         </div>
                         <div class="content has-text-justified">
                             <table class="table is-striped is-hoverable is-fullwidth is-narrow is-centered" style="text-align: center; font-size: xx-small;">
@@ -311,9 +318,9 @@
                             efficient. All training and test data is
                             procedurally (deterministically) generated
                             on-the-fly. There is no need to download large
-                            datasets, and the simulator can be embedded into
-                            the training loop for a "solver-in-the-loop"
-                            correction setting.
+                            datasets, and the simulator can be embedded into the
+                            training loop for all kinds of differentiable
+                            physics like "solver-in-the-loop" correction setups.
                         </div>
                         <div class="content has-text-justified">
                             <img src="apebench_slide.png" style="width: 100%;"/>
@@ -332,7 +339,7 @@
                             An APEBench study is a list of dictionaries which
                             APEBench executes and conviently returns Pandas
                             dataframes that can be used for statistical
-                            postprocessing (over initialization) via Seaborn.
+                            postprocessing (e.g., over random seeds) via Seaborn.
                         </div>
                         <div class="content has-text-justified">
                             <img src="apebench_workflow.png" style="width: 100%;"/>
@@ -353,10 +360,11 @@
                             initialization, stochastic minibatching and
                             optionally also for the procedural data generation).
                             Seed statistics allow for clearly determining a
-                            superior emulator architecture based on hypothesis
-                            testing. For 1D scenarios, APEBench can parallelize
-                            multiple seeds on one GPU to obtain seed statistics
-                            virtually for free.
+                            superior emulator architecture or learning
+                            methodology based on hypothesis testing. For 1D
+                            scenarios, APEBench can parallelize multiple seeds
+                            on one GPU to obtain seed statistics virtually for
+                            free.
                         </div>
                         <div class="content has-text-justified">
                             <img src="apebench_seed_workflow.png" style="width: 100%;"/>
@@ -396,13 +404,16 @@
                     <div class="column is-four-fifths">
                         <h2 class="title is-3">The Relation between Neural Emulators and Numerical Simulators</h2>
                         <div class="content has-text-justified">
-                            (a) Performance of various neural emulator
-                            architectures on a 1D advection problem with
-                            increasing difficulty ($\gamma_1 = \text{CFL}$). If
-                            the demands on the receptive field (given by
-                            $\gamma_1$) are not fulfilled, emulators diverge
-                            immediately. (b) Unrolling improves accuracy at the
-                            highest difficulty.
+                            The fine-grained control over the emulation
+                            scenarios allows for drawing analogies between
+                            neural emulation and classical numerical simulation.
+                            For example, (a) the performance of
+                            convolution-based architectures is bound by their
+                            receptive field and the difficulty (γ₁ = CFL) of the
+                            advection scenario. On the other hand, (a) the
+                            pseudo-spectral FNO architecture is agnostic to
+                            changes in γ₁. (b) For the highest difficulty,
+                            unrolling improves the accuracy of the ResNet.
                         </div>
                         <div class="content has-text-justified">
                             <img src="adv_experiment_together.png" style="width: 100%;"/>
@@ -418,15 +429,16 @@
                     <div class="column is-four-fifths">
                         <h2 class="title is-3">Benchmark Neural-Hybrid Emulators with Differentiable Physics</h2>
                         <div class="content has-text-justified">
-                            ResNet and FNO either as full prediction emulators
-                            or neural-hybrid emulators for 2D advection
-                            ($\gamma_1=10.5$) with a coarse solver doing 10\% or
-                            50\% of the difficulty. The geometric mean of the
-                            rollout error over 100 time steps is shown. Training
-                            with unrolling benefits the % limited receptive
-                            field ResNet yet only shows marginal improvement for
-                            the FNO. The ResNet can work in symbiosis with a
-                            coarse simulator.
+                            With the embedded differentiable solver, APEBench
+                            can investigate neural-hybrid correction setups. For
+                            example, if both ResNet and FNO are used either as
+                            full prediction emulators or neural-hybrid emulators
+                            for 2D advection (γ₁=10.5) with a coarse solver
+                            doing 10% or 50% of the difficulty. Training with
+                            unrolling benefits the limited receptive field
+                            ResNet yet only shows marginal improvement for the
+                            FNO. The ResNet can work in symbiosis with a coarse
+                            simulator.
                         </div>
                         <div class="content has-text-justified">
                             <img src="correction_results.png" style="width: 100%;"/>
@@ -442,15 +454,16 @@
                     <div class="column is-four-fifths">
                         <h2 class="title is-3">A wide range of architectures and PDE dynamics</h2>
                         <div class="content has-text-justified">
-                            Comparison of emulator architectures across various
-                            PDE dynamics in 1D, 2D, and 3D. The ResNet
-                            consistently performs well across all dynamics and
-                            dimensions. Local architectures struggle with
-                            higher-order derivatives, while limited active modes
-                            hinder the FNO's performance in some cases. The
-                            Dilated ResNet is the better long-range architecture
-                            in 1D, whereas the UNet is better suited for higher
-                            dimensions.
+                            The wide range of PDE dynamics in 1D, 2D, and 3D
+                            allows for drawing further analogies. In the paper,
+                            we investigated a subset of the 46 PDE dynamics.
+                            <!-- The ResNet consistently performs well across
+                            all dynamics and dimensions. Local architectures
+                            struggle with higher-order derivatives, while
+                            limited active modes hinder the FNO's performance in
+                            some cases. The Dilated ResNet is the better
+                            long-range architecture in 1D, whereas the UNet is
+                            better suited for higher dimensions. -->
                         </div>
                         <div class="content has-text-justified">
                             <img src="broad_comparison.png" style="width: 100%;"/>
@@ -466,7 +479,9 @@
                     <div class="column is-four-fifths">
                         <h2 class="title is-3">APEBench's experiments suggest neural architectures</h2>
                         <div class="content has-text-justified">
-                            Blabla
+                            Ultimately, with the studies conducted for the
+                            APEBench paper, we can suggest emulator
+                            architectures with the following decision tree.
                         </div>
                         <div class="content has-text-justified">
                             <img src="architecture_decision_tree.png" style="width: 100%;"/>
