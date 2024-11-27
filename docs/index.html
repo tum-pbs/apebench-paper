@@ -129,17 +129,33 @@
             <div class="hero-body">
                 <div class="container">
                     <div id="teaser">
-                        <img src="./static/img/teaser.svg"/>
+                        <img src="static/img/teaser_new_transparant.png"/>
                     </div>
-                    <div style="height: 1rem;"></div>
-                    <h2 class="subtitle has-text-centered is-size-6-mobile">
-                        TODO: 3d animations<br>
-                        APEBench is a JAX-based tool to evaluate autoregressive neural emulators for PDEs on periodic domains in 1d, 2d, and 3d. It comes with an efficient reference simulator based on spectral methods that is used for procedural data generation (no need to download large datasets with APEBench). Since this simulator can also be embedded into emulator training (e.g., for a "solver-in-the-loop" correction setting), this is the first benchmark suite to support <b>differentiable physics</b>.
-                    </h2>
                 </div>
             </div>
         </section>
 
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- TL;DR. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">TL;DR</h2>
+                        <div class="content has-text-justified">
+                        APEBench is a JAX-based tool to evaluate autoregressive
+                        neural emulators for PDEs on periodic domains in 1d, 2d,
+                        and 3d. It comes with an efficient reference simulator
+                        based on spectral methods that is used for procedural
+                        data generation (no need to download large datasets with
+                        APEBench). Since this simulator can also be embedded
+                        into emulator training (e.g., for a "solver-in-the-loop"
+                        correction setting), this is the first benchmark suite
+                        to support <b>differentiable physics</b>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="section">
             <div class="container is-max-desktop is-mobile">
                 <!-- Abstract. -->
@@ -159,6 +175,322 @@
                 </div>
             </div>
         </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Rollout Performance. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Focus on Rollout Performance</h2>
+                        <div class="content has-text-justified">
+                            Rather than temporally aggregated metrics, APEBench
+                            always returns rollout errors to understand temporal
+                            generalization. The evaluation can be done in a wide
+                            range of metrics, e.g., classical normalized RMSE
+                            metrics, Fourier-based mectrics for certain
+                            frequency ranges, and Sobolov-based metrics (H1)
+                            that point out mismatches in higher frequencies.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/ks_test_rollout.gif" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Difficulties. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Unified PDE identifiers</h2>
+                        <div class="content has-text-justified">
+                            Describing Dynamics with a reduced set of
+                            information creates an exchange protocol that
+                            uniquely identies an experiment. These
+                            "difficulties" also encode the challenge of neural
+                            emulation by including spatial resolution and
+                            spatial dimensions.
+                        </div>
+                        <div class="content has-text-justified">
+                            For example, in the animation below over
+                            diffusivity, convectivity, and dispersivity we can
+                            describe a wide range of PDEs: Diffusion, Burgers,
+                            Korteweg-de Vries, Dispersion, and
+                            Dispersion-Diffusion.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/difficulty_animation.gif" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Unrolled Training. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Built-In Support for Unrolled Training</h2>
+                        <div class="content has-text-justified">
+                            APEBench is built around autoregressive emulation
+                            and hence emphasizes the temporal axis in emulator
+                            learning. This includes the option for unrolled
+                            training (also called
+                            autoregressive/recursive/rollout training). We unify
+                            many approaches in terms of main chain (=unrolled)
+                            length T and branch chain (=reference) length B.
+                        </div>
+                        <div class="column is-centered">
+                            <img src="static/img/unrolled_objective.png" style="width: 100%;"/>
+                        </div>
+                        <div class="content has-text-justified">
+                            One-Step supervised training is T=B=1, while
+                            five-step unrolled training is T=B=5. Branch-one
+                            diverted chain training is T=5, B=1. The latter requires
+                            a differentiable solver, readily available in APEBench.
+                        <div class="content has-text-justified">
+                            <img src="static/img/burgers_training_animation.gif" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Wide Range of Dynamics. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">A wide range of Dynamics</h2>
+                        <div class="content has-text-justified">
+                        Accessible via the reduced difficulty or normalized
+                        interfaces or via a physical interface. Most dynamics
+                        are available in 1D, 2D, and 3D.
+                        </div>
+                        <div class="content has-text-justified">
+                            <table class="table is-striped is-hoverable is-fullwidth is-narrow is-centered" style="text-align: center; font-size: xx-small;">
+                                <tr>
+                                    <th>Difficulty</th>
+                                    <th>Phsical</th>
+                                    <th>Normalized</th>
+                                </tr>
+                                <tr><td>diff_lin            </td><td>phy_poisson         </td><td>norm_lin            </td></tr>
+                                <tr><td>diff_lin_simple     </td><td>phy_sh              </td><td>norm_adv            </td></tr>
+                                <tr><td>diff_adv            </td><td>phy_gs              </td><td>norm_diff           </td></tr>
+                                <tr><td>diff_diff           </td><td>phy_gs_type         </td><td>norm_adv_diff       </td></tr>
+                                <tr><td>diff_adv_diff       </td><td>phy_decay_turb      </td><td>norm_disp           </td></tr>
+                                <tr><td>diff_disp           </td><td>phy_kolm_flow       </td><td>norm_fisher         </td></tr>
+                                <tr><td>diff_hyp_diff       </td><td>phy_lin             </td><td>norm_four           </td></tr>
+                                <tr><td>diff_four           </td><td>phy_lin_simple      </td><td>norm_hypdiff        </td></tr>
+                                <tr><td>diff_conv           </td><td>phy_adv             </td><td>norm_nonlin         </td></tr>
+                                <tr><td>diff_burgers        </td><td>phy_diff            </td><td>norm_conv           </td></tr>
+                                <tr><td>diff_kdv            </td><td>phy_adv_diff        </td><td>norm_burgers        </td></tr>
+                                <tr><td>diff_ks_cons        </td><td>phy_disp            </td><td>norm_kdv            </td></tr>
+                                <tr><td>diff_ks             </td><td>phy_hyp_diff        </td><td>norm_ks_cons        </td></tr>
+                                <tr><td>diff_nonlin         </td><td>phy_four            </td><td>norm_ks             </td></tr>
+                                <tr><td>diff_burgers_sc     </td><td>phy_nonlin          </td><td>norm_burgers_sc     </td></tr>
+                                <tr><td>diff_fisher         </td><td>phy_burgers_sc      </td><td>norm_lin_simple     </td></tr>
+                                <tr><td>                    </td><td>phy_kdv             </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_ks              </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_conv            </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_burgers         </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_ks_cons         </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_poly            </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_fisher          </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_unbal_adv       </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_diag_diff       </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_aniso_diff      </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_mix_disp        </td><td>                    </td></tr>
+                                <tr><td>                    </td><td>phy_mix_hyp         </td><td>                    </td></tr>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Procedural Data Generation. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Procedural data generation</h2>
+                        <div class="content has-text-justified">
+                            APEBench's embedded pseudo-spectral solver is very
+                            efficient. All training and test data is
+                            procedurally (deterministically) generated
+                            on-the-fly. There is no need to download large
+                            datasets, and the simulator can be embedded into the
+                            training loop for all kinds of differentiable
+                            physics like "solver-in-the-loop" correction setups.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/apebench_slide.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- APEBench Workflow. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Simplified Study Workflow</h2>
+                        <div class="content has-text-justified">
+                            An APEBench study is a list of dictionaries which
+                            APEBench executes and conviently returns Pandas
+                            dataframes that can be used for statistical
+                            postprocessing (e.g., over random seeds) via Seaborn.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/apebench_workflow.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Seeds first. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Seed Statistics are a first-class Citizen</h2>
+                        <div class="content has-text-justified">
+                            APEBench inherently supports re-running experiments
+                            with different random seeds (for network
+                            initialization, stochastic minibatching and
+                            optionally also for the procedural data generation).
+                            Seed statistics allow for clearly determining a
+                            superior emulator architecture or learning
+                            methodology based on hypothesis testing. For 1D
+                            scenarios, APEBench can parallelize multiple seeds
+                            on one GPU to obtain seed statistics virtually for
+                            free.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/apebench_seed_workflow.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Integrated Volume Render. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Integrated Volume Renderer</h2>
+                        <div class="content has-text-justified">
+                            APEBench is accompanied by an efficient
+                            (Rust/WebGPU-based) volume renderer to quickly
+                            visualize 2D and 3D trajectories. <a
+                            href="https://keksboter.github.io/vape4d/">Try it
+                            yourself</a> based on a five-axis NumPy array (time
+                            x channel x space_0 x space_1 x space_2) or <a
+                            href="https://keksboter.github.io/vape4d/?file=https://huggingface.co/datasets/vollautomat/vape4d/resolve/main/gray_scott_3d.npy&colormap=https://huggingface.co/datasets/vollautomat/vape4d/resolve/main/colormap.json">with
+                            precomputed Gray-Scott data</a> (Caution! This
+                            downloads ~100MB for the opened tab).
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/volume_render_animation.gif" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Relating Emulators with Classical Simulators. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">The Relation between Neural Emulators and Numerical Simulators</h2>
+                        <div class="content has-text-justified">
+                            The fine-grained control over the emulation
+                            scenarios allows for drawing analogies between
+                            neural emulation and classical numerical simulation.
+                            For example, (a) the performance of
+                            convolution-based architectures is bound by their
+                            receptive field and the difficulty (γ₁ = CFL) of the
+                            advection scenario. On the other hand, (a) the
+                            pseudo-spectral FNO architecture is agnostic to
+                            changes in γ₁. (b) For the highest difficulty,
+                            unrolling improves the accuracy of the ResNet.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/adv_experiment_together.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Neural-Hybrid Emulators. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Benchmark Neural-Hybrid Emulators with Differentiable Physics</h2>
+                        <div class="content has-text-justified">
+                            With the embedded differentiable solver, APEBench
+                            can investigate neural-hybrid correction setups. For
+                            example, if both ResNet and FNO are used either as
+                            full prediction emulators or neural-hybrid emulators
+                            for 2D advection (γ₁=10.5) with a coarse solver
+                            doing 10% or 50% of the difficulty. Training with
+                            unrolling benefits the limited receptive field
+                            ResNet yet only shows marginal improvement for the
+                            FNO. The ResNet can work in symbiosis with a coarse
+                            simulator.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/correction_results.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Comparison across Architectures and PDE Dynamics. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">A wide range of architectures and PDE dynamics</h2>
+                        <div class="content has-text-justified">
+                            The wide range of PDE dynamics in 1D, 2D, and 3D
+                            allows for drawing further analogies. In the paper,
+                            we investigated a subset of the 46 PDE dynamics.
+                            <!-- The ResNet consistently performs well across
+                            all dynamics and dimensions. Local architectures
+                            struggle with higher-order derivatives, while
+                            limited active modes hinder the FNO's performance in
+                            some cases. The Dilated ResNet is the better
+                            long-range architecture in 1D, whereas the UNet is
+                            better suited for higher dimensions. -->
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/broad_comparison.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Architecture Decision Tree. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">APEBench's experiments suggest neural architectures</h2>
+                        <div class="content has-text-justified">
+                            Ultimately, with the studies conducted for the
+                            APEBench paper, we can suggest emulator
+                            architectures with the following decision tree.
+                        </div>
+                        <div class="content has-text-justified">
+                            <img src="static/img/architecture_decision_tree.png" style="width: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
 
 
         <section class="section" id="BibTeX">
